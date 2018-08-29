@@ -38,3 +38,10 @@ nbproject/*
 .vscode
 # Sass preprocessor
 .sass-cache/
+
+# CakePHP custom app specific files #
+#####################################
+
+webroot/css/bootstrap
+webroot/js/bootstrap
+webroot/js/jquery

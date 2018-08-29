@@ -197,3 +197,7 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+
+/* For using bootstrap-ui https://github.com/FriendsOfCake/bootstrap-ui */
+\Cake\Core\Plugin::load('BootstrapUI');

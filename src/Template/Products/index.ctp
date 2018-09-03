@@ -55,7 +55,7 @@
 	                		<td><?= h($product->weight_kg) ?> kg</td>
 	                		<td><?= h($product->length_cm) ?> cm</td>
 	                		<td>
-	                			<button type="button" class="btn btn-sm btn-info">View</button>
+	                			<a href="/products/view/<?= h($product->slug) ?>" class="btn btn-sm btn-info" role="button">View</a>
 	                			<button type="button" class="btn btn-sm btn-primary">Add to cart</button>
 	                		</td>
                 		</tr>

@@ -12,6 +12,8 @@
   	<h3>Have an Animal For a Day</h3>
   	<p>It is now so easy and <em>surprising</em>: just add your favourite animals to a cart, make your order and they will come for a day, when they want.</p>
 
+  	<?= $this->Flash->render(); ?>
+
     <div class="row">
 
     	<table class="table table-striped">

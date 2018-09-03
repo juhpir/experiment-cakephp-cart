@@ -15,30 +15,13 @@
   	<hr>
 
   	<h3>Filter the product list</h3>
-  	<p>Please search by product code <em>OR</em> by product name</p>
 
 		<?php
-
-		/* Search form begins */
-
+		/* Search form */
 			echo $this->Form->create(null, ['url' => ['controller' => 'Products', 'action' => 'index'], 'type' => 'get']);
-		?>
-		  	<div class="row">
-    			<div class="col-sm-6">
-    	<?php
-  			echo $this->Form->control('id', ['required' => false, 'type' => 'number', 'label' => 'Product code', 'min' => 1]);
-  		?>
-    			</div>
-    			<div class="col-sm-6 other">
-      			search by product name
-    			</div>
-  			</div>
-
-  		<?php
+  			echo $this->Form->control('search', ['required' => false, 'type' => 'text', 'label' => 'Please type product code or name']);
   			echo $this->Form->button('Search');
 			echo $this->Form->end();
-
-			/* Search form ends */
 		?>
 
 	<hr>

@@ -24,13 +24,22 @@ class ProductsController extends AppController
     public function index()
     {
 
-    	/* Search by product id? */
-    	$productCodeSearch = $this->request->getQuery('id');
-    	if (!is_null($productCodeSearch)) {
+    	/* Search by product id or name? */
+    	$productCodeSearch = $this->request->getQuery('search');
 
-    		/* Search by product id */
-    		$result = $this->Products->find()->where(['id' => $productCodeSearch]);
+    	if ($productCodeSearch != null && trim($productCodeSearch)!="") {
+    		/* This was not a search, so limit what products to show */
 
+    		/* There is a rule, that product code is always numeric and product name can't be only numeric */
+    		if (is_numeric($productCodeSearch)) {
+    			/* Search by product id */
+    			$result = $this->Products->find()->where(['id' => $productCodeSearch]);
+    		}
+    		else {
+    			/* Search by product name */
+    			$result = $this->Products->find()->where(['title LIKE' => '%'.$productCodeSearch.'%']);
+    		}
+    		
     		/* Set flash message based on how many results search returned */
     		$amount = $result->count();
     		$flashmsg = 'The search returned '.$amount.' results.';
@@ -39,7 +48,7 @@ class ProductsController extends AppController
     		
     	}
     	else {
-    		/* Search the whole data */
+    		/* This was not a search, so show all products */
     		$result=$this->Products->find();
     	}
 

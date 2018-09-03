@@ -1,6 +1,10 @@
 <!-- File: src/Template/Articles/view.ctp -->
 
-<div class="container" role="main">
+<?php
+/* Single product view */
+?>
+
+<div class="container">
 
   <div class="jumbotron">
     <div class="row">
@@ -15,6 +19,10 @@
         	<div class="col-md-8">
 	        	<table class="table table-striped">
 	            <tbody>
+            	  <tr>
+	                <td>Product code</td>
+	                <td><?= h($product->id) ?></td>
+	              </tr>
 	              <tr>
 	                <td>Sex</td>
 	                <td><?= h($product->sex) ?></td>

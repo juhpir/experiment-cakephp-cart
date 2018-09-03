@@ -21,4 +21,11 @@ class ProductsController extends AppController
         $this->set(compact('product'));
     }
 
+    public function index()
+    {
+        $this->loadComponent('Paginator');
+        $products = $this->Paginator->paginate($this->Products->find());
+        $this->set(compact('products'));
+    }
+
 }

@@ -99,12 +99,45 @@ $this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootst
     </head>
 
     <?php
-    echo $this->fetch('tb_body_start');
-    echo $this->fetch('tb_flash');
-    echo $this->fetch('content');
-    echo $this->fetch('tb_footer');
-    echo $this->fetch('script');
-    echo $this->fetch('tb_body_end');
+        echo $this->fetch('tb_body_start');
+        echo $this->fetch('tb_flash');
+    ?>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">A4D-shop</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/products">Products</a></li>
+            <li><a href="/carts">Shopping Cart (<span id="cartItems"></span>)</a></li>
+            <li><a href="/pages/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <?php
+        echo $this->fetch('content');
+        echo $this->fetch('tb_footer');
+        echo $this->fetch('script');
+    ?>
+
+    <script type="text/javascript">
+        window.onload=function(){
+            getCartItems();
+        }
+    </script>
+
+    <?php
+        echo $this->fetch('tb_body_end');
     ?>
 
 </html>

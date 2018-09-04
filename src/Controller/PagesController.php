@@ -40,6 +40,9 @@ class PagesController extends AppController
      */
     public function display(...$path)
     {
+
+        $this->viewBuilder()->setLayout('TwitterBootstrap/mycustomlayout');
+        
         $count = count($path);
         if (!$count) {
             return $this->redirect('/');

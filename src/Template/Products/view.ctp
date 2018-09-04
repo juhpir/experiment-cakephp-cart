@@ -1,4 +1,4 @@
-<!-- File: src/Template/Articles/view.ctp -->
+<!-- File: src/Template/Products/view.ctp -->
 
 <?php
 /* Single product view */

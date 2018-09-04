@@ -100,7 +100,6 @@ $this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootst
 
     <?php
         echo $this->fetch('tb_body_start');
-        echo $this->fetch('tb_flash');
     ?>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -119,12 +118,23 @@ $this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootst
             <li class="active"><a href="/products">Products</a></li>
             <li><a href="/carts">Shopping Cart (<span id="cartItems">0</span>)</a></li>
             <li><a href="/pages/contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/products/add">Add a new product</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
 <div class="container">
+
+        <?php
+            echo $this->fetch('tb_flash');
+        ?>
+
     <div class="jumbotron">
 
     <h2>A4D-shop</h2>

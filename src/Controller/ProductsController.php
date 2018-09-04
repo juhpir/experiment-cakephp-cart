@@ -5,6 +5,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Utility\Text;
 
 class ProductsController extends AppController
 {
@@ -56,6 +57,31 @@ class ProductsController extends AppController
         $this->loadComponent('Paginator');
         $products = $this->Paginator->paginate($result);
         $this->set(compact('products'));
+    }
+
+
+    public function add()
+    {
+
+        $product = $this->Products->newEntity();
+
+        if ($this->request->is('post')) {
+            $product = $this->Products->patchEntity($product, $this->request->getData());
+            $product->slug = Text::slug($product->title);
+            $product->published = true;
+
+            if ($this->Products->save($product)) {
+                $this->Flash->set('The new product was successfully added!', ['element' => 'success']);
+
+                return $this->redirect('/products/view/'.$product->slug);
+            }
+            else {
+                $this->Flash->set('The new product could not be added! '.$product->sex, ['element' => 'error']);
+            }
+
+        }
+
+        $this->set(compact('product'));
     }
 
 }

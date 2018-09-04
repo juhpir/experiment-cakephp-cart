@@ -1,4 +1,4 @@
-<!-- File: src/Template/Articles/index.ctp -->
+<!-- File: src/Template/Products/index.ctp -->
 
 <?php
 /* Product search and multiple product listing */

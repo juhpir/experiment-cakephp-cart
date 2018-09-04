@@ -56,19 +56,23 @@
 	                		<td><?= h($product->length_cm) ?> cm</td>
 	                		<td>
 	                			<a href="/products/view/<?= h($product->slug) ?>" class="btn btn-sm btn-info" role="button">View</a>
-	                			<button type="button" class="btn btn-sm btn-primary">Add to cart</button>
+	                			<button type="button" class="btn btn-sm btn-primary" onclick="addToCart(<?= h($product->id) ?>)">Add to cart</button>
 	                		</td>
                 		</tr>
-
-            			<?php
-            		}
-            	?>
+        		<?php
+                	}
+        		?>
             </tbody>
           </table>
         
 	</div>
-  
+ 
   </div>
 
-
 </div>
+
+<?php
+	/* Add to cart form must be here in order to generate csrf token for making ajax requests valid */
+	echo $this->Form->create(null, ['url' => ['controller' => 'Carts', 'action' => 'add'], 'type' => 'put']);
+	echo $this->Form->end();
+?>

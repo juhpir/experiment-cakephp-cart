@@ -79,7 +79,7 @@ $this->append('css', $html5Shim);
 /**
  * Prepend `script` block with jQuery and Bootstrap scripts
  */
-$this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootstrap']));
+$this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootstrap', 'cart']));
 
 ?>
 <!DOCTYPE html>

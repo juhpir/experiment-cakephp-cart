@@ -5,7 +5,6 @@
 ?>
 
 <div class="container">
-
   <div class="jumbotron">
     <div class="row">
         <div class="col-md-4">
@@ -49,14 +48,19 @@
         
           <div class="cart-clear-both">
 	          <h2 class="text-primary"><?= $this->Number->format($product->price_eur) ?> €</h2>
-	          <button type="button" class="btn btn-lg btn-primary">Add to cart</button>
+	          <button type="button" class="btn btn-lg btn-primary" onclick="addToCart(<?= h($product->id) ?>)">Add to cart</button>
       	  </div>
 
         </div>
 	</div>
   </div>
 
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
+<?php
+	/* Add to cart form must be here in order to generate csrf token for making ajax requests valid */
+	echo $this->Form->create(null, ['url' => ['controller' => 'Carts', 'action' => 'add'], 'type' => 'put']);
+	echo $this->Form->end();
+?>

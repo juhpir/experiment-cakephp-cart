@@ -117,12 +117,21 @@ $this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootst
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/products">Products</a></li>
-            <li><a href="/carts">Shopping Cart (<span id="cartItems"></span>)</a></li>
+            <li><a href="/carts">Shopping Cart (<span id="cartItems">0</span>)</a></li>
             <li><a href="/pages/contact">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
+
+<div class="container">
+    <div class="jumbotron">
+
+    <h2>A4D-shop</h2>
+    <p>Have an <strong>A</strong>nimal <strong>F</strong>or a <strong>D</strong>ay! It is now so easy and <em>surprising</em>: just add your favourite animals to a cart, make your order and they will come for a day, when they want.</p>
+
+    </div>
+</div>
 
     <?php
         echo $this->fetch('content');

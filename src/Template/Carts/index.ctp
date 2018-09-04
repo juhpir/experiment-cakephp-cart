@@ -9,12 +9,16 @@
   <div class="jumbotron">
 
   	<h1>The shopping cart</h1>
-  	<h3>A4D-shop: have an Animal For a Day</h3>
-  	<p></p>
 
   	<hr>
 
   	<?= $this->Flash->render(); ?>
+
+  				<?php
+
+                if (!empty($cart)) {
+
+            	?>
 
     <div class="row">
 
@@ -30,7 +34,10 @@
               </tr>
             </thead>
             <tbody>
+
             	<?php
+            		}
+
             		foreach ($cart as $product) {
     			?>
             			<tr>
@@ -45,8 +52,12 @@
                 		</tr>
         		<?php
                 	}
-        		?>
-       			<tr>
+
+                if (!empty($cart)) {
+
+            	?>
+
+            	<tr>
                 	<td></td>
                 	<td></td>
                 	<td></td>
@@ -54,11 +65,28 @@
                 	<td><strong><?= h($total) ?> €</strong></td>
                 	<td></td>
                	</tr>
+
             </tbody>
           </table>
-        
-	</div>
+
+        <div class="col-xs-3 pull-right">
+        	<button type="button" class="btn btn-danger btn-block">Buy now</button>
+      	</div>
+
+    </div>
+
+				<?php
+
+            	    }       		
+
+       			?>
  
   </div>
 
 </div>
+
+<?php
+	/* Add to cart form must be here in order to generate csrf token for making ajax requests valid */
+	echo $this->Form->create(null, ['url' => ['controller' => 'Carts', 'action' => 'add'], 'type' => 'put']);
+	echo $this->Form->end();
+?>

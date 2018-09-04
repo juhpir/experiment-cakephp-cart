@@ -8,13 +8,11 @@
 
   <div class="jumbotron">
 
-  	<h1>A4D-shop</h1>
-  	<h3>Have an Animal For a Day</h3>
-  	<p>It is now so easy and <em>surprising</em>: just add your favourite animals to a cart, make your order and they will come for a day, when they want.</p>
+  	<h1>Product list</h1>
 
   	<hr>
 
-  	<h3>Filter the product list</h3>
+  	<p>Filter the product list</p>
 
 		<?php
 		/* Search form */

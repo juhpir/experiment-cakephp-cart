@@ -55,11 +55,11 @@ class CartsController extends AppController
     			$cart[$product->id]["id"] = $product->id;
     			$cart[$product->id]["title"] = $product->title;
     			$cart[$product->id]["price"] = $product->price_eur;
-    			$cart[$product->id]["amount"] = $amount;
-    			$cart[$product->id]["subtotalPerProduct"] = $amount * $product->price_eur;
+    			$cart[$product->id]["amount"] = $productsInCart[$product->id];
+    			$cart[$product->id]["subtotalPerProduct"] = $productsInCart[$product->id] * $product->price_eur;
     			$cart[$product->id]["slug"] = $product->slug;
 
-    			$total += $amount * $product->price_eur;
+    			$total += $productsInCart[$product->id] * $product->price_eur;
 
     		}
    		

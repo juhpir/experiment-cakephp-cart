@@ -58,6 +58,7 @@
           <div class="cart-view-addtocart-wrapper">
 	          <h2 class="text-primary"><strong><?= $this->Number->precision($product->price_eur, 2) ?> €</strong></h2>
 	          <button type="button" class="btn btn-lg btn-primary" onclick="addToCart('<?= h($product->id) ?>', '<?= h($product->title) ?>')">Add to cart</button>
+	          <button type="button" class="btn btn-lg btn-success" onclick="window.location.href = '/carts'; return false;">Show the cart</button>
 	          <button type="button" class="btn btn-lg btn-warning" onclick="window.history.go(-1); return false;">Back to previous page</button>
       	  </div>
 

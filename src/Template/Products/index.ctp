@@ -19,7 +19,7 @@
 			echo $this->Form->create(null, ['url' => ['controller' => 'Products', 'action' => 'index'], 'type' => 'get']);
   		echo $this->Form->control('search', ['required' => false, 'type' => 'text', 'label' => 'Please type product code or name']);
   		echo $this->Form->button('Search');
-      echo $this->Form->button('Reset', ['type' => 'reset', 'style' => 'margin-left:10px', 'onclick' => "window.location.href = '/'"]);
+      echo $this->Form->button('Reset', ['type' => 'reset', 'style' => 'margin-left:10px', 'onclick' => "window.location.href = '/';return false;"]);
 			echo $this->Form->end();
 		?>
 
@@ -71,6 +71,7 @@
           </table>
 
           <div class="pull-right">
+            <button style="display:block" type="button" class="btn btn-success" onclick="window.location.href = '/carts'; return false;">Show the cart</button>
               <ul class="pagination">
                 <?= $this->Paginator->first('<< '.('first')) ?>
                 <?= $this->Paginator->prev('< '.('previous')) ?>

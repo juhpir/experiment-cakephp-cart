@@ -72,18 +72,23 @@
             </tbody>
           </table>
 
-        <div class="col-xs-3 pull-right">
-        	<button type="button" class="btn btn-danger btn-block" onclick="alert('Cashier feature is not implemented yet');">Buy now</button>
-          <button type="button" class="btn btn-warning btn-block" onclick="window.history.go(-1); return false;">Back to previous page</button>
-      	</div>
-
     </div>
+
+        <div class="col-xs-3 pull-right">
+          <button type="button" class="btn btn-danger btn-block" onclick="alert('Cashier feature is not implemented yet');">Buy now</button>
+          <button type="button" class="btn btn-warning btn-block" onclick="window.history.go(-1); return false;">Back to previous page</button>
+        </div>
 
 				<?php
 
-            	    }       		
+      	    } 
+            else {
+              ?>
+                <button style="max-width: 200px;" type="button" class="btn btn-warning btn-block" onclick="window.history.go(-1); return false;">Back to previous page</button>
+              <?php
+            }      		
 
-       			?>
+   			?>
  
   </div>
 

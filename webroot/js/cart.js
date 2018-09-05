@@ -3,7 +3,7 @@
 	Must be used in conjunction with a CakePHP form that contains Csrf Token.
 */
 
-function addToCart(productCode) {
+function addToCart(productCode, productName) {
 	$.ajax({
 		url: '/carts/add',
 		dataType: 'json',
@@ -14,12 +14,12 @@ function addToCart(productCode) {
 		data: JSON.stringify({ productCode: productCode }),
 		success: function(data, textStatus, jQxhr){
 			console.log('addToCart(productCode) success: ' + textStatus + ', ' + JSON.stringify(data));
-			alert('Item added to the cart');
+			alert('Added 1 item of ' + productName + ' to the cart');
 			updateCartItems(data);
 		},
         error: function(jqXhr, textStatus, errorThrown) {
 			console.log('addToCart(productCode) error: ' + textStatus + ', ' + errorThrown);
-			alert('Add to cart failed. Please contact sales with your order details.');
+			alert('Adding 1 item ' + productName + ' to cart failed. Please contact sales with your order details.');
         }
 	});
 }

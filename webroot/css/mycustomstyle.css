@@ -3,8 +3,9 @@ body {
   padding-bottom: 30px;
 }
 
-.cart-clear-both {
+.cart-view-addtocart-wrapper {
 	clear: both;
+	padding-left: 23px;
 }
 
 .product-img {

@@ -10,14 +10,16 @@
         <div class="col-md-4">
         	<?php
         	if (empty($product->photo_url)) { // dirty fix
-        		$product->photo_url = "default.jpg";
+        		$product->photo_url = "../img/default.jpg";
         	}
         	?>
         	<img class="product-img" src="/webroot/files/<?= h($product->photo_url) ?>">
         </div>
         <div class="col-md-8">
-        	<h1><?= h($product->title) ?></h1>
-        	<p><?= h($product->body) ?></p>
+        	<div class="cart-view-addtocart-wrapper">
+	        	<h1><?= h($product->title) ?></h1>
+	        	<p><?= h($product->body) ?></p>
+        	</div>
 
         	<div class="col-md-8">
 	        	<table class="table table-striped">
@@ -50,9 +52,9 @@
 	          	</table>
       		</div>
         
-          <div class="cart-clear-both">
-	          <h2 class="text-primary"><?= $this->Number->format($product->price_eur) ?> €</h2>
-	          <button type="button" class="btn btn-lg btn-primary" onclick="addToCart(<?= h($product->id) ?>)">Add to cart</button>
+          <div class="cart-view-addtocart-wrapper">
+	          <h2 class="text-primary"><strong><?= $this->Number->format($product->price_eur) ?> €</strong></h2>
+	          <button type="button" class="btn btn-lg btn-primary" onclick="addToCart('<?= h($product->id) ?>', '<?= h($product->title) ?>'')">Add to cart</button>
       	  </div>
 
         </div>

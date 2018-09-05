@@ -12,7 +12,7 @@
 
   	<hr>
 
-  	<p>Filter the product list</p>
+  	<h4>Filter the product list</h4>
 
 		<?php
 		/* Search form */
@@ -28,15 +28,18 @@
 
     <div class="row">
 
+      <h5 class="pull-right">Please sort the product listing by column by clicking the column title</h5>
+
     	<table class="table table-striped">
             <thead>
               <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Sex</th>
-                <th>Age</th>
-                <th>Weigth</th>
-                <th>Length</th>
+                <th><?= $this->Paginator->sort('id', 'Code', ['direction' => 'desc']) ?></th>
+                <th><?= $this->Paginator->sort('title', 'Name') ?></th>
+                <th><?= $this->Paginator->sort('sex', 'Sex') ?></th>
+                <th><?= $this->Paginator->sort('age_years', 'Age') ?></th>
+                <th><?= $this->Paginator->sort('weight_kg', 'Weigth') ?></th>
+                <th><?= $this->Paginator->sort('length_cm', 'Length') ?></th>
+                <th><?= $this->Paginator->sort('price_eur', 'Price per item') ?></th>
                 <th></th>
               </tr>
             </thead>
@@ -52,9 +55,10 @@
 	                		<td><?= h($product->age_years) ?> years</td>
 	                		<td><?= h($product->weight_kg) ?> kg</td>
 	                		<td><?= h($product->length_cm) ?> cm</td>
+                      <td><?= h($product->price_eur) ?> €</td>
 	                		<td>
 	                			<a href="/products/view/<?= h($product->slug) ?>" class="btn btn-sm btn-info" role="button">View</a>
-	                			<button type="button" class="btn btn-sm btn-primary" onclick="addToCart(<?= h($product->id) ?>)">Add to cart</button>
+	                			<button type="button" class="btn btn-sm btn-primary" onclick="addToCart('<?= h($product->id) ?>', '<?= h($product->title) ?>')">Add to cart</button>
 	                		</td>
                 		</tr>
         		<?php

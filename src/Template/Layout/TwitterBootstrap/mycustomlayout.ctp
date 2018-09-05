@@ -116,7 +116,7 @@ $this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootst
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/products">Products</a></li>
-            <li><a href="/carts">Shopping Cart (<span id="cartItems">0</span>)</a></li>
+            <li><a href="/carts">Shopping Cart (<span id="cartItems"></span>)</a></li>
             <li><a href="/pages/contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>

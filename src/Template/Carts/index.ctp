@@ -70,7 +70,7 @@
           </table>
 
         <div class="col-xs-3 pull-right">
-        	<button type="button" class="btn btn-danger btn-block">Buy now</button>
+        	<button type="button" class="btn btn-danger btn-block" onclick="alert('Cashier feature is not implemented yet');">Buy now</button>
       	</div>
 
     </div>

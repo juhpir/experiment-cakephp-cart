@@ -71,7 +71,7 @@ class ProductsController extends AppController
             $product->published = true;
 
             if (empty($product->photo_url)) {
-                $product->photo_url = 'default.jpg'; // ei tallennu?
+                $product->photo_url = '../default.jpg'; // fix: this doesn't become saved
             }
 
             if ($this->Products->save($product)) {

@@ -70,13 +70,18 @@ class ProductsController extends AppController
             $product->slug = Text::slug($product->title);
             $product->published = true;
 
+            if (empty($product->photo_url)) {
+                $product->photo_url = 'default.jpg'; // ei tallennu?
+            }
+
             if ($this->Products->save($product)) {
+
                 $this->Flash->set('The new product was successfully added!', ['element' => 'success']);
 
                 return $this->redirect('/products/view/'.$product->slug);
             }
             else {
-                $this->Flash->set('The new product could not be added! '.$product->sex, ['element' => 'error']);
+                $this->Flash->set('The new product could not be added!', ['element' => 'error']);
             }
 
         }

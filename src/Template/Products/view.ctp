@@ -8,8 +8,12 @@
   <div class="jumbotron">
     <div class="row">
         <div class="col-md-4">
-        	<img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
-        	<!-- <?= h($product->photo_url) ?>  -->
+        	<?php
+        	if (empty($product->photo_url)) { // dirty fix
+        		$product->photo_url = "default.jpg";
+        	}
+        	?>
+        	<img class="product-img" src="/webroot/files/<?= h($product->photo_url) ?>">
         </div>
         <div class="col-md-8">
         	<h1><?= h($product->title) ?></h1>

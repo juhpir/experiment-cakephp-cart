@@ -7,7 +7,7 @@
   	<h1>Add a new product</h1>
   	<p>* = required fields</p>
 
-		<?= $this->Form->create($product) ?>
+		<?= $this->Form->create($product, ['type' => 'file']) ?>
 	
 	<table class="table table-striped">
 
@@ -74,7 +74,7 @@
 			</tr>
 			<tr>
 				<td>
-					<?= $this->Form->control('photo_url') ?>
+					<?= $this->Form->control('photo_url', ['type' => 'file']) ?>
 				</td>
 				<td>
 				</td>

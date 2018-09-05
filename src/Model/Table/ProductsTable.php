@@ -9,6 +9,27 @@ use Cake\ORM\Table;
 
 class ProductsTable extends Table {
 
+	public function initialize(array $config)
+    {
+        parent::initialize($config);
+
+        $this->setTable('products');
+        $this->setDisplayField('title');
+        $this->setPrimaryKey('id');
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            // You can configure as many upload fields as possible,
+            // where the pattern is `field` => `config`
+            //
+            // Keep in mind that while this plugin does not have any limits in terms of
+            // number of files uploaded per request, you should keep this down in order
+            // to decrease the ability of your users to block other requests.
+            'photo_url' => [
+        		'path' => 'webroot{DS}files{DS}',
+    		],
+		]);
+    }
+
 	public function validationDefault(Validator $validator) {
 
 	    $validator
@@ -65,9 +86,24 @@ class ProductsTable extends Table {
 			]);
 
         $validator
-            ->scalar('photo_url')
+            ->provider('upload', \Josegonzalez\Upload\Validation\DefaultValidation::class)
             ->maxLength('photo_url', 255)
-            ->allowEmpty('photo_url');
+            ->allowEmpty('photo_url')
+            ->add('photo_url', 'fileUnderPhpSizeLimit', [
+                'rule' => 'isUnderPhpSizeLimit',
+                'message' => 'This file is too large',
+                'provider' => 'upload'
+            ])
+            ->add('photo_url', 'fileFileUpload', [
+                'rule' => 'isFileUpload',
+                'message' => 'There was no file found to upload',
+                'provider' => 'upload'
+            ])
+            ->add('photo_url', 'fileSuccessfulWrite', [
+                'rule' => 'isSuccessfulWrite',
+                'message' => 'This upload failed',
+                'provider' => 'upload'
+            ]);
 
 	    return $validator;
 	}

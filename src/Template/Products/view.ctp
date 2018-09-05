@@ -5,6 +5,9 @@
 ?>
 
 <div class="container">
+
+  <div id="ajax-flash"></div>
+
   <div class="jumbotron">
     <div class="row">
         <div class="col-md-4">
@@ -34,11 +37,11 @@
 	              </tr>
 	              <tr>
 	                <td>Age</td>
-	                <td><?= $this->Number->format($product->age_years) ?> years</td>
+	                <td><?= $this->Number->precision($product->age_years, 1) ?> years</td>
 	              </tr>
 	              <tr>
 	                <td>Weight</td>
-	                <td><?= $this->Number->format($product->weight_kg) ?> kg</td>
+	                <td><?= $this->Number->precision($product->weight_kg, 1) ?> kg</td>
 	              </tr>
 	              <tr>
 	                <td>Length</td>
@@ -53,8 +56,9 @@
       		</div>
         
           <div class="cart-view-addtocart-wrapper">
-	          <h2 class="text-primary"><strong><?= $this->Number->format($product->price_eur) ?> €</strong></h2>
-	          <button type="button" class="btn btn-lg btn-primary" onclick="addToCart('<?= h($product->id) ?>', '<?= h($product->title) ?>'')">Add to cart</button>
+	          <h2 class="text-primary"><strong><?= $this->Number->precision($product->price_eur, 2) ?> €</strong></h2>
+	          <button type="button" class="btn btn-lg btn-primary" onclick="addToCart('<?= h($product->id) ?>', '<?= h($product->title) ?>')">Add to cart</button>
+	          <button type="button" class="btn btn-lg btn-warning" onclick="window.history.go(-1); return false;">Back to previous page</button>
       	  </div>
 
         </div>

@@ -40,7 +40,8 @@ class ProductsTable extends Table {
             ->scalar('title')
             ->maxLength('title', 255)
             ->requirePresence('title', 'create')
-            ->notEmpty('title');
+            ->notEmpty('title')
+            ->add('title', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('slug')
@@ -59,12 +60,12 @@ class ProductsTable extends Table {
             ->notEmpty('in_stock');
 
         $validator
-        	->numeric('price_eur')
+        	->decimal('price_eur',2)
         	->requirePresence('price_eur', 'create')
         	->notEmpty('price_eur');
 
         $validator
-        	->numeric('weight_kg')
+        	->decimal('weight_kg')
             ->allowEmpty('weight_kg');
 
         $validator
@@ -72,7 +73,7 @@ class ProductsTable extends Table {
             ->allowEmpty('length_cm');
 
         $validator
-        	->numeric('age_years')
+        	->decimal('age_years')
             ->allowEmpty('age_years');
 
         $validator

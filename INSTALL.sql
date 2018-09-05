@@ -5,11 +5,11 @@ CREATE TABLE products (
     title VARCHAR(255) NOT NULL,
     slug VARCHAR(191) NOT NULL,
     body TEXT,
-    in_stock SMALLINT,
-    price_eur SMALLINT,
-    weight_kg SMALLINT,
+    in_stock SMALLINT  NOT NULL,
+    price_eur DECIMAL( 10, 2 ) NOT NULL,
+    weight_kg DECIMAL( 10, 1 ),
     length_cm SMALLINT,
-    age_years SMALLINT,
+    age_years DECIMAL( 3, 1 ),
     sex VARCHAR(6) NOT NULL,
     photo_url VARCHAR(255),
     published BOOLEAN DEFAULT FALSE,
@@ -18,8 +18,8 @@ CREATE TABLE products (
 
 INSERT INTO products (title, slug, body, in_stock, price_eur, weight_kg, length_cm, age_years, sex, photo_url, published)
 VALUES
-('Doris the Elephant', 'doris_the_elephant', 'A fantastic old elephant to match your largest dreams.', 3, 299, 6600, 5500, 62, 'female', 'elephant.jpg', 1);
+('Doris the Elephant', 'doris_the_elephant', 'A fantastic old elephant to match your largest dreams.', 3, 299.99, 6600, 5500, 62, 'female', '', 1);
 
 INSERT INTO products (title, slug, body, in_stock, price_eur, weight_kg, length_cm, age_years, sex, photo_url, published)
 VALUES
-('Morris the Cat', 'morris_the_cat', 'A fantastic cute cat to match your sweetest dreams.', 25, 19, 4, 34, 3, 'male', 'cat.jpg', 1);
+('Morris the Cat', 'morris_the_cat', 'A fantastic cute cat to match your sweetest dreams.', 25, 19.00, 4, 34, 3, 'male', '', 1);

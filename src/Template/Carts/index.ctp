@@ -6,6 +6,8 @@
 
 <div class="container">
 
+  <div id="ajax-flash"></div>
+
   <div class="jumbotron">
 
   	<h1>The shopping cart</h1>
@@ -43,11 +45,12 @@
             			<tr>
 	                		<td><?= h($product['id']) ?></td>
 	                		<td><?= h($product['title']) ?></td>
-	                		<td><?= h($product['price']) ?> €</td>
-	                		<td><?= h($product['amount']) ?></td>
-	                		<td><?= h($product['subtotalPerProduct']) ?> €</td>
+	                		<td><div id="cart-price-<?= h($product['id']) ?>" style="display:inline"><?= h($this->Number->precision($product['price'], 2)) ?></div> €</td>
+	                		<td><div id="cart-amount-<?= h($product['id']) ?>"><?= h($product['amount']) ?></div></td>
+	                		<td><div id="cart-subtotal-<?= h($product['id']) ?>" style="display:inline"><?= h($this->Number->precision($product['subtotalPerProduct'], 2)) ?></div> €</td>
 	                		<td>
 	                			<a href="/products/view/<?= h($product['slug']) ?>" class="btn btn-sm btn-info" role="button">View</a>
+                        <button type="button" class="btn btn-sm btn-primary" onclick="addToCart('<?= h($product['id']) ?>', '<?= h($product['title']) ?>'); updateCartCalculation('<?= h($product['id']) ?>');">Add 1 item more</button>
 	                		</td>
                 		</tr>
         		<?php
@@ -62,7 +65,7 @@
                 	<td></td>
                 	<td></td>
                 	<td><strong>Total:</strong></td>
-                	<td><strong><?= h($total) ?> €</strong></td>
+                	<td><strong><div id="cart-total" style="display:inline"><?= h($this->Number->precision($total, 2)) ?></div> €</strong></td>
                 	<td></td>
                	</tr>
 
@@ -71,6 +74,7 @@
 
         <div class="col-xs-3 pull-right">
         	<button type="button" class="btn btn-danger btn-block" onclick="alert('Cashier feature is not implemented yet');">Buy now</button>
+          <button type="button" class="btn btn-warning btn-block" onclick="window.history.go(-1); return false;">Back to previous page</button>
       	</div>
 
     </div>

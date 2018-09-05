@@ -17,12 +17,15 @@
 		<?php
 		/* Search form */
 			echo $this->Form->create(null, ['url' => ['controller' => 'Products', 'action' => 'index'], 'type' => 'get']);
-  			echo $this->Form->control('search', ['required' => false, 'type' => 'text', 'label' => 'Please type product code or name']);
-  			echo $this->Form->button('Search');
+  		echo $this->Form->control('search', ['required' => false, 'type' => 'text', 'label' => 'Please type product code or name']);
+  		echo $this->Form->button('Search');
+      echo $this->Form->button('Reset', ['type' => 'reset', 'style' => 'margin-left:10px', 'onclick' => "window.location.href = '/'"]);
 			echo $this->Form->end();
 		?>
 
 	<hr>
+
+    <div id="ajax-flash"></div>
 
   	<?= $this->Flash->render(); ?>
 
@@ -52,10 +55,10 @@
 	                		<td><?= h($product->id) ?></td>
 	                		<td><?= h($product->title) ?></td>
 	                		<td><?= h($product->sex) ?></td>
-	                		<td><?= h($product->age_years) ?> years</td>
-	                		<td><?= h($product->weight_kg) ?> kg</td>
+	                		<td><?= h($this->Number->precision($product->age_years, 1)) ?> years</td>
+	                		<td><?= h($this->Number->precision($product->weight_kg, 1)) ?> kg</td>
 	                		<td><?= h($product->length_cm) ?> cm</td>
-                      <td><?= h($product->price_eur) ?> €</td>
+                      <td><?= h($this->Number->precision($product->price_eur, 2)) ?> €</td>
 	                		<td>
 	                			<a href="/products/view/<?= h($product->slug) ?>" class="btn btn-sm btn-info" role="button">View</a>
 	                			<button type="button" class="btn btn-sm btn-primary" onclick="addToCart('<?= h($product->id) ?>', '<?= h($product->title) ?>')">Add to cart</button>
@@ -66,6 +69,20 @@
         		?>
             </tbody>
           </table>
+
+          <div class="pull-right">
+              <ul class="pagination">
+                <?= $this->Paginator->first('<< '.('first')) ?>
+                <?= $this->Paginator->prev('< '.('previous')) ?>
+                <?= $this->Paginator->next(('next').' >') ?>
+                <?= $this->Paginator->last(('last').' >>') ?>
+              </ul>
+
+              <?= $this->Paginator->numbers() ?>
+
+          <h4><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} of {{count}} products')]) ?></div>
+
+        </p>
         
 	</div>
  

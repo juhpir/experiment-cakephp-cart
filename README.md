@@ -10,9 +10,9 @@ Just quickly testing out of CakePHP 3.6 by creating a simple shopping cart examp
 ### Additional notes
 
 Give www-server read and write permissions to directories:  
-logs 
-tmp 
-webroot/files/ 
+logs  
+tmp  
+webroot/files/  
  
 Check that the following symbolic links work:  
 webroot/js/bootstrap -> ../../vendor/twbs/bootstrap/dist/js  
